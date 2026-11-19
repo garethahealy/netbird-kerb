@@ -59,6 +59,7 @@ if (( prev == 0 )) || (( ticket_ok == 0 )) || [[ "$last_date" != "$today" ]]; th
   if kinit -t "$KERB_KEYTAB" -k "$KERB_PRINCIPAL"; then
     print -r -- "$today" > "$LAST"
     log "kinit ok (prev=$prev ticket_ok=$ticket_ok last=$last_date)"
+    netbird login --extend
   else
     log "kinit failed (prev=$prev ticket_ok=$ticket_ok last=$last_date)"
     exit 1
